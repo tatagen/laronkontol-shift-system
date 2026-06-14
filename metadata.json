@@ -1,0 +1,6 @@
+{
+  "name": "ホテル清掃シフト・報酬管理システム",
+  "description": "客室全12室の清掃割り当て、スタッフの出勤管理、および変動する部屋単価に基づく日次・週次・月次の報酬自動集計システムです。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
