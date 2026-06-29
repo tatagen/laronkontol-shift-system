@@ -5,7 +5,7 @@ import { AssignmentView } from "./components/AssignmentView";
 import { DashboardView } from "./components/DashboardView";
 import { MasterView } from "./components/MasterView";
 import { StaffPortalView } from "./components/StaffPortalView";
-import { CalendarDays, TrendingUp, Key, RotateCcw, Building, Users, Smile } from "lucide-react";
+import { CalendarDays, TrendingUp, Key, Smile } from "lucide-react";
 
 export default function App() {
   const [selectedDate, setSelectedDate] = useState<string>("2026-06-13"); // Set default around seed range
@@ -76,19 +76,6 @@ export default function App() {
   const saveAssignments = (updated: Assignment[]) => {
     setAssignments(updated);
     localStorage.setItem("clean_system_assignments", JSON.stringify(updated));
-  };
-
-  // RESET handler to restore pristine demo statistics
-  const resetToDemoData = () => {
-    if (window.confirm("全ての登録変更をリセットし、初期デモデータ（2026年6月のシフト・割当実績含む）を復元しますか？")) {
-      const seed = getInitialData();
-      saveStaff(seed.staff);
-      saveRooms(seed.rooms);
-      saveShifts(seed.shifts);
-      saveAssignments(seed.assignments);
-      setSelectedDate("2026-06-13");
-      showToast("初期デモデータを正常に復元しました。");
-    }
   };
 
   // Shift 出勤 toggling handler
@@ -239,9 +226,6 @@ export default function App() {
             
             {/* 左側: ロゴ・タイトル */}
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center text-white shadow-md shadow-indigo-200">
-                <Building className="w-5 h-5" />
-              </div>
               <div>
                 <span className="text-base sm:text-lg font-bold font-display text-slate-800 block tracking-tight">
                   ホテル清掃管理 <span className="text-slate-400 font-light ml-1">| Professional</span>
@@ -378,19 +362,10 @@ export default function App() {
         </div>
       </main>
 
-      {/* 3. フッター & デリケートな管理者リセットバー */}
+      {/* 3. フッター */}
       <footer className="bg-white border-t border-slate-100 py-6 mt-12 text-center text-xs text-slate-400">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-3.5 flex flex-col sm:flex-row items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p>© 2026 ホテル清掃管理者コントロールシステム — 全12室・変動単価対応仕様</p>
-          <button
-            onClick={resetToDemoData}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 hover:bg-slate-200 hover:text-slate-800 text-slate-400 font-bold rounded-lg transition-all text-[11px] cursor-pointer"
-            id="reset-demo-data-button"
-            title="初期のダミー稼働実績データを再設定します。"
-          >
-            <RotateCcw className="w-3.5 h-3.5" />
-            初期デモデータを復元する
-          </button>
         </div>
       </footer>
 
