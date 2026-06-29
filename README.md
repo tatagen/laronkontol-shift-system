@@ -23,6 +23,8 @@
 | ビルド | Vite 6 |
 | デプロイ | Cloudflare Pages |
 
+🖥️ **[デモを見る](https://laronkontol-shift-system.pages.dev/)**
+
 ## ローカル実行
 
 ```bash
